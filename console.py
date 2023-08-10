@@ -135,6 +135,62 @@ class HBNBCommand(cmd.Cmd):
 
             return
 
+    def do_update(self, lines):
+        """updates an instance based on the class name and id
+        Usage: update <class name> <id> <attribute name> "<attribute value>"
+        """
+        if not lines:
+            print("** class name missing **")
+            return
+        tokens = shlex.split(lines)
+        # print(len(tokens))
+
+        if tokens[0] not in HBNBCommand.available_cls.keys():
+            print("** class doesn't exist **")
+            return
+
+        if len(lines) == 1:
+            print("** instance id missing **")
+            return
+
+        storage.reload()
+        objs = storage.all()
+        key = f"{tokens[0]}.{tokens[1]}"
+
+        if key not in objs.keys() and len(tokens) >= 2:
+            print("** no instance found **")
+            return
+        if key in objs.keys() and len(tokens) == 2:
+            print("** attribute name missing **")
+            return
+        if len(tokens) == 3:
+            print("** value missing **")
+
+        if len(tokens) == 4:
+            if hasattr(objs[key], tokens[2]):
+                attribute_type = type(getattr(objs[key], tokens[2]))
+
+                try:
+                    setattr(objs[key], tokens[2], attribute_type(tokens[3]))
+                except ValueError:
+                    return
+            else:
+                value = tokens[3]
+
+                # check the type of the value
+                if value.isdigit() or value.startswith("-") and value[1:].isdigit:
+                    value = int(value)
+                elif isinstance(value, str):
+                    value = str(value)
+                elif "." in value and all(
+                    part.isdigit() for part in value.split(".", 1)
+                ):
+                    value = float(value)
+                else:
+                    print("Not type float, int nor str")
+                setattr(objs[key], tokens[2], value)
+            storage.save()
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
