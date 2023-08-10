@@ -37,13 +37,16 @@ class FileStorage:
 
     def reload(self):
         """deserialization of the JSON file to __objects if file exits"""
+
+        # partially initialized module 'models' (most likely due to a circular import)
+        from models.base_model import BaseModel
+
         try:
             with open(FileStorage.__file_path, "r") as f:
                 dict_obj = json.load(f)
                 for key, value in dict_obj.items():
-                    class_name, obj_id = key.split(".")
-                    cls = globals()[class_name]
-                    obj = cls(**value)
+                    class_name = value["__class__"]
+                    obj = eval(class_name)(**value)
                     FileStorage.__objects[key] = obj
 
         except FileNotFoundError:
