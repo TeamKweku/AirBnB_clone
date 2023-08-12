@@ -189,18 +189,18 @@ class HBNBCommand(cmd.Cmd):
                 except ValueError:
                     return
             else:
-                val = tokens[3]
+                v = tokens[3]
 
                 # check the type of the value
-                if val.isdigit() or val.startswith("-") and val[1:].isdigit:
-                    val = int(val)
-                elif isinstance(val, str):
-                    val = str(val)
-                elif "." in val and all(part.isdigit() for part in val.split(".", 1)):
-                    val = float(val)
+                if v.isdigit() or v.startswith("-") and v[1:].isdigit:
+                    v = int(v)
+                elif isinstance(v, str):
+                    v = str(v)
+                elif "." in v and all(p.isdigit() for p in v.split(".", 1)):
+                    v = float(v)
                 else:
                     print("Not type float, int nor str")
-                setattr(objs[key], tokens[2], val)
+                setattr(objs[key], tokens[2], v)
             storage.save()
 
     def default(self, lines):
@@ -215,7 +215,7 @@ class HBNBCommand(cmd.Cmd):
 
         match = re.search(r"\.", lines)
         if match:
-            slines = [lines[: match.span()[0]], lines[match.span()[1] :]]
+            slines = [lines[:match.span()[0]], lines[match.span()[1]:]]
             match = re.search(r"\((.*?)\)", slines[1])
             if match:
                 cmd = [slines[1][: match.span()[0]], match.group()[1:-1]]
