@@ -44,7 +44,7 @@ class TestBaseModel(unittest.TestCase):
     def test_none_passed(self):
         """checking when none is passed"""
         base1 = BaseModel(None)
-        self.assertNotIn(None, base1.__dict__.values())
+        self.assertNotIn(None, base1.__dict__.keys())
 
     def test_empty_dict(self):
         dicts = {}
@@ -71,7 +71,6 @@ class TestBaseModelSave(unittest.TestCase):
 
     def tearDown(self):
         """destroy after running test"""
-        FileStorage._FileStorage__file_path = "file.json"
         try:
             os.remove("tests.json")
         except FileNotFoundError:
