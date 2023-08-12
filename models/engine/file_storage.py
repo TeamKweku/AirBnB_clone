@@ -38,8 +38,13 @@ class FileStorage:
     def reload(self):
         """deserialization of the JSON file to __objects if file exits"""
 
-        # partially initialized module 'models' (most likely due to a circular import)
         from models.base_model import BaseModel
+        from models.user import User
+        from models.amenity import Amenity
+        from models.state import State
+        from models.place import Place
+        from models.review import Review
+        from models.city import City
 
         try:
             with open(FileStorage.__file_path, "r") as f:
