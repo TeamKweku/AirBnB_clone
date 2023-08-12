@@ -234,7 +234,7 @@ class HBNBCommand(cmd.Cmd):
         tokens = shlex.split(lines)
 
         if len(tokens) == 1:
-            if tokens[0] in HBNBCommand.dicts.keys():
+            if tokens[0] in HBNBCommand.available_cls.keys():
                 for key in objs:
                     if key.split(".")[0] == tokens[0]:
                         count += 1
