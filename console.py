@@ -226,7 +226,7 @@ class HBNBCommand(cmd.Cmd):
         return
 
     def do_count(self, lines):
-        """retrieve the number of instances of a class
+        """method that retrieve the number of instances of a class
         Usage: <class name>.class()
         """
         count = 0
@@ -234,7 +234,7 @@ class HBNBCommand(cmd.Cmd):
         tokens = shlex.split(lines)
 
         if len(tokens) == 1:
-            if tokens[0] in HBNBCommand.dicts.keys():
+            if tokens[0] in HBNBCommand.available_cls.keys():
                 for key in objs:
                     if key.split(".")[0] == tokens[0]:
                         count += 1
