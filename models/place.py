@@ -5,10 +5,12 @@ Module for Place class.
 
 from models.base_model import BaseModel
 
+
 class Place(BaseModel):
     """
     Place class inherits from BaseModel.
     """
+
     city_id = ""
     user_id = ""
     name = ""

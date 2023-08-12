@@ -143,7 +143,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
         else:
-            print([str(objs[key]) for key in objs if key.split(".")[0] == tokens[0]])
+            p = [str(objs[k]) for k in objs if k.split(".")[0] == tokens[0]]
+            print(p)
 
             return
 
@@ -187,20 +188,20 @@ class HBNBCommand(cmd.Cmd):
                 except ValueError:
                     return
             else:
-                value = tokens[3]
+                val = tokens[3]
 
                 # check the type of the value
-                if value.isdigit() or value.startswith("-") and value[1:].isdigit:
-                    value = int(value)
-                elif isinstance(value, str):
-                    value = str(value)
-                elif "." in value and all(
-                    part.isdigit() for part in value.split(".", 1)
+                if val.isdigit() or val.startswith("-") and val[1:].isdigit:
+                    val = int(val)
+                elif isinstance(val, str):
+                    val = str(val)
+                elif "." in val and all(
+                    part.isdigit() for part in val.split(".", 1)
                 ):
-                    value = float(value)
+                    val = float(val)
                 else:
                     print("Not type float, int nor str")
-                setattr(objs[key], tokens[2], value)
+                setattr(objs[key], tokens[2], val)
             storage.save()
 
 
