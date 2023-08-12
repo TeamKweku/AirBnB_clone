@@ -16,6 +16,7 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
+        """the instantation method of the class"""
         # copy_dict = kwargs.copy()
         str_rep = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())

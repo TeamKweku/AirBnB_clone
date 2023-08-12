@@ -2,6 +2,7 @@
 """a module that implements the console app (cmd)"""
 import cmd
 import shlex
+import re
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -195,14 +196,49 @@ class HBNBCommand(cmd.Cmd):
                     val = int(val)
                 elif isinstance(val, str):
                     val = str(val)
-                elif "." in val and all(
-                    part.isdigit() for part in val.split(".", 1)
-                ):
+                elif "." in val and all(part.isdigit() for part in val.split(".", 1)):
                     val = float(val)
                 else:
                     print("Not type float, int nor str")
                 setattr(objs[key], tokens[2], val)
             storage.save()
+
+    def default(self, lines):
+        """this handl default commands to console"""
+        cmds = {
+            "show": self.do_show,
+            "all": self.do_all,
+            "update": self.do_update,
+            "destroy": self.do_destroy,
+            "count": self.do_count,
+        }
+
+        match = re.search(r"\.", lines)
+        if match:
+            slines = [lines[: match.span()[0]], lines[match.span()[1] :]]
+            match = re.search(r"\((.*?)\)", slines[1])
+            if match:
+                cmd = [slines[1][: match.span()[0]], match.group()[1:-1]]
+                if cmd[0] in cmds.keys():
+                    call = f"{slines[0]} {cmd[1]}"
+                    return cmds[cmd[0]](call)
+        print("*** Unknown command ***")
+        return
+
+    def do_count(self, lines):
+        """retrieve the number of instances of a class
+        Usage: <class name>.class()
+        """
+        count = 0
+        objs = storage.all()
+        tokens = shlex.split(lines)
+
+        if len(tokens) == 1:
+            if tokens[0] in HBNBCommand.dicts.keys():
+                for key in objs:
+                    if key.split(".")[0] == tokens[0]:
+                        count += 1
+                print(count)
 
 
 if __name__ == "__main__":
