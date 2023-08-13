@@ -37,5 +37,6 @@ class TestPlace(unittest.TestCase):
         place = Place()
         self.assertEqual(place.user_id, "")
 
+
 if __name__ == "__main__":
     unittest.main()

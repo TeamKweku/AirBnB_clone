@@ -23,5 +23,6 @@ class TestState(unittest.TestCase):
         state = State()
         self.assertEqual(state.name, "")
 
+
 if __name__ == "__main__":
     unittest.main()
