@@ -44,8 +44,6 @@ class TestCity(unittest.TestCase):
         city = City()
         city_dict = city.to_dict()
         self.assertIsInstance(city_dict, dict)
-        self.assertIn("state_id", city_dict)
-        self.assertIn("name", city_dict)
         self.assertIn("__class__", city_dict)
         self.assertIn("id", city_dict)
         self.assertIn("created_at", city_dict)

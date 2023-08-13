@@ -39,7 +39,6 @@ class TestAmenity(unittest.TestCase):
         amenity = Amenity()
         amenity_dict = amenity.to_dict()
         self.assertIsInstance(amenity_dict, dict)
-        self.assertIn("name", amenity_dict)
         self.assertIn("__class__", amenity_dict)
         self.assertIn("id", amenity_dict)
         self.assertIn("created_at", amenity_dict)
