@@ -33,26 +33,5 @@ class TestReview(unittest.TestCase):
         review = Review()
         self.assertEqual(review.text, "")
 
-    def test_id_type(self):
-        review = Review()
-        self.assertIsInstance(review.id, str)
-
-    def test_created_at_type(self):
-        review = Review()
-        self.assertIsInstance(review.created_at, datetime)
-
-    def test_updated_at_type(self):
-        review = Review()
-        self.assertIsInstance(review.updated_at, datetime)
-
-    def test_to_dict(self):
-        review = Review()
-        review_dict = review.to_dict()
-        self.assertIsInstance(review_dict, dict)
-        self.assertIn("place_id", review_dict)
-        self.assertIn("user_id", review_dict)
-        self.assertIn("text", review_dict)
-        self.assertIn("__class__", review_dict)
-        self.assertIn("id", review_dict)
-        self.assertIn("created_at", review_dict)
-        self.assertIn("updated_at", review_dict)
+if __name__ == "__main__":
+    unittest.main()

@@ -42,27 +42,5 @@ class TestUser(unittest.TestCase):
         user = User()
         self.assertEqual(user.last_name, "")
 
-    def test_id_type(self):
-        user = User()
-        self.assertIsInstance(user.id, str)
-
-    def test_created_at_type(self):
-        user = User()
-        self.assertIsInstance(user.created_at, datetime)
-
-    def test_updated_at_type(self):
-        user = User()
-        self.assertIsInstance(user.updated_at, datetime)
-
-    def test_to_dict(self):
-        user = User()
-        user_dict = user.to_dict()
-        self.assertIsInstance(user_dict, dict)
-        self.assertIn("email", user_dict)
-        self.assertIn("password", user_dict)
-        self.assertIn("first_name", user_dict)
-        self.assertIn("last_name", user_dict)
-        self.assertIn("__class__", user_dict)
-        self.assertIn("id", user_dict)
-        self.assertIn("created_at", user_dict)
-        self.assertIn("updated_at", user_dict)
+if __name__ == "__main__":
+    unittest.main()

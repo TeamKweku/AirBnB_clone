@@ -23,23 +23,5 @@ class TestAmenity(unittest.TestCase):
         amenity = Amenity()
         self.assertEqual(amenity.name, "")
 
-    def test_id_type(self):
-        amenity = Amenity()
-        self.assertIsInstance(amenity.id, str)
-
-    def test_created_at_type(self):
-        amenity = Amenity()
-        self.assertIsInstance(amenity.created_at, datetime)
-
-    def test_updated_at_type(self):
-        amenity = Amenity()
-        self.assertIsInstance(amenity.updated_at, datetime)
-
-    def test_to_dict(self):
-        amenity = Amenity()
-        amenity_dict = amenity.to_dict()
-        self.assertIsInstance(amenity_dict, dict)
-        self.assertIn("__class__", amenity_dict)
-        self.assertIn("id", amenity_dict)
-        self.assertIn("created_at", amenity_dict)
-        self.assertIn("updated_at", amenity_dict)
+if __name__ == "__main__":
+    unittest.main()

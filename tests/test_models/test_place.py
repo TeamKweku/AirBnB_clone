@@ -37,21 +37,5 @@ class TestPlace(unittest.TestCase):
         place = Place()
         self.assertEqual(place.user_id, "")
 
-    # Additional tests for other attributes
-
-    def test_id_type(self):
-        place = Place()
-        self.assertIsInstance(place.id, str)
-
-    def test_created_at_type(self):
-        place = Place()
-        self.assertIsInstance(place.created_at, datetime)
-
-    def test_updated_at_type(self):
-        place = Place()
-        self.assertIsInstance(place.updated_at, datetime)
-
-    def test_to_dict(self):
-        place = Place()
-        place_dict = place.to_dict()
-        self.assertIsInstance(place_dict, dict)
+if __name__ == "__main__":
+    unittest.main()

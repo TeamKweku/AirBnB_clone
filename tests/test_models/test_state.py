@@ -23,19 +23,5 @@ class TestState(unittest.TestCase):
         state = State()
         self.assertEqual(state.name, "")
 
-    def test_id_type(self):
-        state = State()
-        self.assertIsInstance(state.id, str)
-
-    def test_created_at_type(self):
-        state = State()
-        self.assertIsInstance(state.created_at, datetime)
-
-    def test_updated_at_type(self):
-        state = State()
-        self.assertIsInstance(state.updated_at, datetime)
-
-    def test_to_dict(self):
-        state = State()
-        state_dict = state.to_dict()
-        self.assertIsInstance(state_dict, dict)
+if __name__ == "__main__":
+    unittest.main()

@@ -137,3 +137,6 @@ class TestToDict(unittest.TestCase):
         base1 = BaseModel()
         with self.assertRaises(TypeError):
             base1.to_dict(None)
+
+if __name__ == "__main__":
+    unittest.main()
