@@ -5,6 +5,7 @@ Module for the testing the User.
 import unittest
 from models.user import User
 
+
 class TestUser(unittest.TestCase):
     def test_user_attributes(self):
         user = User()
