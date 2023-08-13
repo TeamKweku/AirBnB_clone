@@ -252,6 +252,6 @@ e952b772-80a5-41e9-b728-6bc4dc5c21b4
 
 ```
 ## Authors
-- [Musa Godwin](https://@github.com/victormayowa:w)
+- [Victor Mayowa](https://@github.com/victormayowa:w)
 - [Theophilus Ackom](https://@github.com/TeamKweku)
 
